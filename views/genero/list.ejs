@@ -1,0 +1,53 @@
+<%- include('../cabecalho') -%>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>GÊNEROS</h2>
+        </div>
+        <!-- With Material Design Colors -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                           GÊNEROS
+                            <small>Estes são os gêneros cadastrados no sistema!</small>
+                        </h2>
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Gênero</th>
+                                    <th>Edita</th>
+                                    <th>Deleta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%Generos.forEach(function(genero){%>
+                                <tr class="bg-red">
+                                    <th scope="row"><%=genero._id%></th>
+                                    <td><%=genero.nome%></td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <%});%>
+                            </tbody>
+                            <tfoot>
+                                <%if(typeof msg!=="undefined"){%>
+                                    <div class="alert bg-green alert-dismissible" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <%=msg%>  
+                                    </div>
+                                <%}%>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Material Design Colors -->
+    </div>
+</section>
+<%- include('../rodape') -%>
