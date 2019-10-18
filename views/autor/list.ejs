@@ -1,0 +1,80 @@
+<%- include('../cabecalho') -%>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>AUTORES</h2>
+        </div>
+        <!-- With Material Design Colors -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <form action="/autor" method="POST">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="pesquisa" class="form-control" placeholder="Pesquisando.......">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" style="margin-top:0px;" class="btn btn-primary m-t-15 waves-effect">Pesquisar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="body table-responsive">
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Autor</th>
+                                    <th>Nacionalidade</th>
+                                    <th>Data de Nascimento</th>
+                                    <th>Foto</th>
+                                    <th>Edita</th>
+                                    <th>Deleta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%Autores.forEach(function(autor){%>
+                                <tr class="bg-blue">
+                                    <th scope="row"><%=autor._id%></th>
+                                    <td><%=autor.nome%></td>
+                                    <td><%=autor.nacionalidade%></td>
+                                    <td><%=autor.datanasc.getDate()+"/"+autor.datanasc.getMonth()+1+"/"+autor.datanasc.getFullYear()%></td>
+                                    <td><img style="height:50px;" src="/<%=autor.foto%>"></td>
+                                    <td>
+                                        <a href="/autor/edit/<%=autor._id%>"
+                                            class="btn bg-pink btn-circle-lg waves-effect waves-circle waves-float">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="/autor/del/<%=autor._id%>"
+                                            class="btn bg-pink btn-circle-lg waves-effect waves-circle waves-float">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <%});%>
+                            </tbody>
+                            <tfoot>
+                                <%if(typeof msg!=="undefined"){%>
+                                <div class="alert bg-pink alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <%=msg%>
+                                </div>
+                                <%}%>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# With Material Design Colors -->
+    </div>
+</section>
+<%- include('../rodape') -%>
